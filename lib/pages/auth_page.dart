@@ -2,6 +2,7 @@ import 'package:chat/core/services/auth/auth_mock_service.dart';
 import 'package:flutter/material.dart';
 import '../components/auth_form.dart';
 import '../core/models/auth_form_data.dart';
+import '../core/services/auth/auth_service.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -20,17 +21,18 @@ class _AuthPageState extends State<AuthPage> {
       });
       if (formData.isLogin) {
         //login
-        await AuthMockService().login(formData.email, formData.password);
+        await AuthService().login(formData.email, formData.password);
       } else {
         //signup
         print('signup');
-        await AuthMockService().signup(
+        await AuthService().signup(
           formData.name,
           formData.email,
           formData.password,
           formData.image,
         );
-        print('executou');
+        print('Auth page recebeu os parametros do form, que vieram do model auth_form_data.dart, e foram usados para converter'
+            'os dados em um objeto do tipo AppUser, que foi enviado para o AuthService/AuthMockService');
       }
     } catch (error) {
       //this line will be executed if the setState fails
