@@ -48,7 +48,7 @@ class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Colors.black,
       body: Stack(
         alignment: Alignment.center,
         children: [

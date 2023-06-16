@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import '../core/models/auth_form_data.dart';
 
-
 class AuthForm extends StatefulWidget {
   final void Function(AuthFormData) onSubmit;
 
@@ -51,6 +50,7 @@ class _AuthFormState extends State<AuthForm> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.white,
       margin: EdgeInsets.all(18),
       child: Padding(
         padding: EdgeInsets.all(15),

@@ -1,12 +1,15 @@
 import 'package:chat/core/models/chat_message.dart';
+import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 import '../core/services/chat/chat_service.dart';
+import 'message_bubble.dart';
 
 class Messages extends StatelessWidget {
   const Messages({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final currentUser = AuthService().currentUser;
     return StreamBuilder(
       stream: ChatService().messagesStream(),
       builder: (ctx, snapshot) {
@@ -25,13 +28,14 @@ class Messages extends StatelessWidget {
                   Icon(
                     Icons.sentiment_neutral_outlined,
                     size: 80,
+                    color: Colors.orange,
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Text(
                     'Você tem um total de 0 mensagens',
-                    style: TextStyle(fontSize: 22),
+                    style: TextStyle(fontSize: 22,color: Colors.orange),
                   ),
                 ],
               ),
@@ -40,25 +44,15 @@ class Messages extends StatelessWidget {
         } else {
           final messages = snapshot.data as List<ChatMessage>;
           return Container(
-            height: 300,
+            width: MediaQuery.of(context).size.width,
             child: ListView.builder(
-              reverse: true,
+                reverse: true,
                 itemCount: messages.length,
                 itemBuilder: (_, index) {
-                  return InkWell(
-                    onTap: () {},
-                    child: ListTile(
-                        title: Text(messages[index].userName),
-                        subtitle: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(messages[index].text),
-                          ],
-                        ),
-                        leading: CircleAvatar(
-                          backgroundImage:
-                              AssetImage(messages[index].userImageURL),
-                        )),
+                  return MessageBubble(
+                    isMe:
+                        messages[index].userId == currentUser?.id.toString(),
+                    message: messages[index],
                   );
                 }),
           );
