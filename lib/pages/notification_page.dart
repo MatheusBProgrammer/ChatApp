@@ -12,11 +12,11 @@ class NotificationPage extends StatelessWidget {
     final service = Provider.of<ChatNotificationService>(context);
     final items = service.items;
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).primaryColor,
         appBar: AppBar(
           title: const Text('Notification\'s'),
           centerTitle: true,
-          backgroundColor: Colors.black87,
+          backgroundColor: Theme.of(context).primaryColor,
         ),
         body: ListView.builder(
             itemCount: service.itemsCount,

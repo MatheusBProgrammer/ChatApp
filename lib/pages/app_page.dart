@@ -17,11 +17,14 @@ class AppPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).primaryColor,
+
+        //backgroundColor: Color(0xFF0F0F1B),
         appBar: AppBar(
           title: Text('Programmer\'s Chat'),
           centerTitle: true,
-          backgroundColor: Colors.black87,
+                  backgroundColor: Theme.of(context).primaryColor,
+
           actions: [
             DropdownButton(
               underline: Container(),

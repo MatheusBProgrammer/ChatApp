@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'ChatApp',
         theme: ThemeData(
-            primaryColor: Colors.black87,//Color(0xFF4DD0E1),
+            primaryColor: Color(0xFF0F0F1B),
             textTheme:
                 const TextTheme(bodyLarge: TextStyle(color: Colors.white))),
         home: AuthOrAppPage(),
